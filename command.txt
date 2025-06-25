@@ -1,0 +1,3 @@
+screenshot
+webcam
+exec:whoami
