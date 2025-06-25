@@ -23,7 +23,7 @@ function sendCommand() {
   fetch("https://api.github.com/repos/discordyounes45/remote-control-panel/contents/command.txt", {
     method: "PUT",
     headers: {
-      "Authorization": "Bearer YOUR_GITHUB_TOKEN", // Create a token in GitHub Settings > Developer Settings
+      "Authorization": "Bearer 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", // Create a token in GitHub Settings > Developer Settings
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
