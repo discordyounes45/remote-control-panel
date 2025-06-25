@@ -20,7 +20,7 @@
 <script>
 function sendCommand() {
   const cmd = document.getElementById("cmd").value;
-  fetch("https://api.github.com/repos/YOUR_USERNAME/remote-control-panel/contents/command.txt", {
+  fetch("https://api.github.com/repos/discordyounes45/remote-control-panel/contents/command.txt", {
     method: "PUT",
     headers: {
       "Authorization": "Bearer YOUR_GITHUB_TOKEN", // Create a token in GitHub Settings > Developer Settings
